@@ -19,7 +19,7 @@ namespace IsTakipSistemiMVC.Controllers
     }
     public class CalisanController : Controller
     {
-        IsTakipDBEntities entitiy = new IsTakipDBEntities();
+        IsTakipDBEntities1 entitiy = new IsTakipDBEntities1();
         // GET: Calisan
         public ActionResult Index()
         {
@@ -112,8 +112,8 @@ namespace IsTakipSistemiMVC.Controllers
                 {
                     IsDurum isDurum = new IsDurum();
 
-                    isDurum.isBaslık = i.isBaslık;
-                    isDurum.isAcıklama = i.isAcıklama;
+                    isDurum.isBaslık = i.isBaslik;
+                    isDurum.isAcıklama = i.isAciklama;
                     isDurum.iletilenTarih = i.iletilenTarih;
                     isDurum.yapilanTarih = i.yapilanTarih;
                     isDurum.durumAd = i.Durumlar.durumAd;

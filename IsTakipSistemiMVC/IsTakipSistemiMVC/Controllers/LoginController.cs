@@ -9,7 +9,7 @@ namespace IsTakipSistemiMVC.Controllers
 {
     public class LoginController : Controller
     {
-        IsTakipDBEntities entity = new IsTakipDBEntities();
+        IsTakipDBEntities1 entity = new IsTakipDBEntities1();
         // GET: Login
         public ActionResult Index()
         {

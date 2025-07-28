@@ -9,7 +9,7 @@ namespace IsTakipSistemiMVC.Controllers
 {
     public class YoneticiController : Controller
     {
-        IsTakipDBEntities entitiy = new IsTakipDBEntities();
+        IsTakipDBEntities1 entitiy = new IsTakipDBEntities1();
         // GET: Yonetici
         public ActionResult Index()
         {
@@ -58,8 +58,8 @@ namespace IsTakipSistemiMVC.Controllers
             int secilenPersonelId = Convert.ToInt32(formCollection["selectPer"]);
 
             Isler yeniIs = new Isler();
-            yeniIs.isBaslık = isBaslık;
-            yeniIs.isAcıklama = isAcıklama;
+            yeniIs.isBaslik = isBaslık;
+            yeniIs.isAciklama = isAcıklama;
             yeniIs.isPersonelId = secilenPersonelId;
             yeniIs.iletilenTarih = DateTime.Now;
             yeniIs.isDurumId = 1;

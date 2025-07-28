@@ -15,14 +15,14 @@ namespace IsTakipSistemiMVC.Models
     public partial class Isler
     {
         public int isId { get; set; }
-        public string isBaslık { get; set; }
-        public string isAcıklama { get; set; }
+        public string isBaslik { get; set; }
+        public string isAciklama { get; set; }
         public Nullable<int> isPersonelId { get; set; }
         public Nullable<System.DateTime> iletilenTarih { get; set; }
         public Nullable<System.DateTime> yapilanTarih { get; set; }
         public Nullable<int> isDurumId { get; set; }
-        public string isYorum { get; set; }
         public Nullable<bool> isOkunma { get; set; }
+        public string isYorum { get; set; }
     
         public virtual Durumlar Durumlar { get; set; }
         public virtual Personeller Personeller { get; set; }

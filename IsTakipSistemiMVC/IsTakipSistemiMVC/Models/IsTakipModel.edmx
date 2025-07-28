@@ -24,14 +24,14 @@
             <PropertyRef Name="isId" />
           </Key>
           <Property Name="isId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="isBaslık" Type="nvarchar(max)" />
-          <Property Name="isAcıklama" Type="nvarchar(max)" />
+          <Property Name="isBaslik" Type="nvarchar(max)" />
+          <Property Name="isAciklama" Type="nvarchar(max)" />
           <Property Name="isPersonelId" Type="int" />
           <Property Name="iletilenTarih" Type="datetime" />
-          <Property Name="yapilanTarih" Type="date" />
+          <Property Name="yapilanTarih" Type="datetime" />
           <Property Name="isDurumId" Type="int" />
-          <Property Name="isYorum" Type="nvarchar(max)" />
           <Property Name="isOkunma" Type="bit" />
+          <Property Name="isYorum" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Personeller">
           <Key>
@@ -56,10 +56,10 @@
         </EntityType>
         <EntityType Name="YetkiTurler">
           <Key>
-            <PropertyRef Name="yetkiTurId" />
+            <PropertyRef Name="yetkiTuruId" />
           </Key>
-          <Property Name="yetkiTurId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="yetkiTurAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="yetkiTuruId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yetkiTuruAd" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Isler_Durumlar">
           <End Role="Durumlar" Type="Self.Durumlar" Multiplicity="0..1" />
@@ -102,7 +102,7 @@
           <End Role="Personeller" Type="Self.Personeller" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="YetkiTurler">
-              <PropertyRef Name="yetkiTurId" />
+              <PropertyRef Name="yetkiTuruId" />
             </Principal>
             <Dependent Role="Personeller">
               <PropertyRef Name="personelYetkiTurId" />
@@ -179,10 +179,10 @@
         </EntityType>
         <EntityType Name="YetkiTurler">
           <Key>
-            <PropertyRef Name="yetkiTurId" />
+            <PropertyRef Name="yetkiTuruId" />
           </Key>
-          <Property Name="yetkiTurId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="yetkiTurAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yetkiTuruId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yetkiTuruAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Personeller" Relationship="Self.FK_Personeller_YetkiTurler" FromRole="YetkiTurler" ToRole="Personeller" />
         </EntityType>
         <Association Name="FK_Personeller_Birimler">
@@ -202,14 +202,14 @@
           <End Role="Personeller" Type="Self.Personeller" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="YetkiTurler">
-              <PropertyRef Name="yetkiTurId" />
+              <PropertyRef Name="yetkiTuruId" />
             </Principal>
             <Dependent Role="Personeller">
               <PropertyRef Name="personelYetkiTurId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="IsTakipDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="IsTakipDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Birimler" EntityType="Self.Birimler" />
           <EntitySet Name="Durumlar" EntityType="Self.Durumlar" />
           <EntitySet Name="Personeller" EntityType="Self.Personeller" />
@@ -232,22 +232,22 @@
             <End Role="Personeller" EntitySet="Personeller" />
             <End Role="Isler" EntitySet="Isler" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Isler">
           <Key>
             <PropertyRef Name="isId" />
           </Key>
           <Property Name="isId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="isBaslık" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="isAcıklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isBaslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="isPersonelId" Type="Int32" />
           <Property Name="iletilenTarih" Type="DateTime" Precision="3" />
-          <Property Name="yapilanTarih" Type="DateTime" Precision="0" />
+          <Property Name="yapilanTarih" Type="DateTime" Precision="3" />
           <Property Name="isDurumId" Type="Int32" />
+          <Property Name="isOkunma" Type="Boolean" />
+          <Property Name="isYorum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Durumlar" Relationship="IsTakipDBModel.FK_Isler_Durumlar" FromRole="Isler" ToRole="Durumlar" />
           <NavigationProperty Name="Personeller" Relationship="IsTakipDBModel.FK_Isler_Personeller" FromRole="Isler" ToRole="Personeller" />
-          <Property Name="isYorum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="isOkunma" Type="Boolean" />
         </EntityType>
         <Association Name="FK_Isler_Durumlar">
           <End Type="IsTakipDBModel.Durumlar" Role="Durumlar" Multiplicity="0..1" />
@@ -273,12 +273,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="IsTakipDBModelStoreContainer" CdmEntityContainer="IsTakipDBEntities">
+        <EntityContainerMapping StorageEntityContainer="IsTakipDBModelStoreContainer" CdmEntityContainer="IsTakipDBEntities1">
           <EntitySetMapping Name="Birimler">
             <EntityTypeMapping TypeName="IsTakipDBModel.Birimler">
               <MappingFragment StoreEntitySet="Birimler">
@@ -321,22 +321,22 @@
           <EntitySetMapping Name="YetkiTurler">
             <EntityTypeMapping TypeName="IsTakipDBModel.YetkiTurler">
               <MappingFragment StoreEntitySet="YetkiTurler">
-                <ScalarProperty Name="yetkiTurId" ColumnName="yetkiTurId" />
-                <ScalarProperty Name="yetkiTurAd" ColumnName="yetkiTurAd" />
+                <ScalarProperty Name="yetkiTuruId" ColumnName="yetkiTuruId" />
+                <ScalarProperty Name="yetkiTuruAd" ColumnName="yetkiTuruAd" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Isler">
             <EntityTypeMapping TypeName="IsTakipDBModel.Isler">
               <MappingFragment StoreEntitySet="Isler">
-                <ScalarProperty Name="isOkunma" ColumnName="isOkunma" />
                 <ScalarProperty Name="isYorum" ColumnName="isYorum" />
+                <ScalarProperty Name="isOkunma" ColumnName="isOkunma" />
                 <ScalarProperty Name="isDurumId" ColumnName="isDurumId" />
                 <ScalarProperty Name="yapilanTarih" ColumnName="yapilanTarih" />
                 <ScalarProperty Name="iletilenTarih" ColumnName="iletilenTarih" />
                 <ScalarProperty Name="isPersonelId" ColumnName="isPersonelId" />
-                <ScalarProperty Name="isAcıklama" ColumnName="isAcıklama" />
-                <ScalarProperty Name="isBaslık" ColumnName="isBaslık" />
+                <ScalarProperty Name="isAciklama" ColumnName="isAciklama" />
+                <ScalarProperty Name="isBaslik" ColumnName="isBaslik" />
                 <ScalarProperty Name="isId" ColumnName="isId" />
               </MappingFragment>
             </EntityTypeMapping>

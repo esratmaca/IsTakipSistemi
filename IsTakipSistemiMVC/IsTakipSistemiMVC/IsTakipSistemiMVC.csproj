@@ -117,8 +117,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\IsTakipModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IsTakipModel.Context.cs</LastGenOutput>
       <DependentUpon>IsTakipModel.edmx</DependentUpon>
+      <LastGenOutput>IsTakipModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\IsTakipModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

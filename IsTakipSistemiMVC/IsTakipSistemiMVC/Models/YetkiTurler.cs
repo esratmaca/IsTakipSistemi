@@ -20,8 +20,8 @@ namespace IsTakipSistemiMVC.Models
             this.Personeller = new HashSet<Personeller>();
         }
     
-        public int yetkiTurId { get; set; }
-        public string yetkiTurAd { get; set; }
+        public int yetkiTuruId { get; set; }
+        public string yetkiTuruAd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Personeller> Personeller { get; set; }

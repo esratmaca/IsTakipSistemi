@@ -8,7 +8,7 @@ namespace IsTakipSistemiMVC.Models
 {
     public class IsDurumModel
     {
-        public List<IsDurum>isDurumlar {  get; set; }
+        public List<IsDurum> isDurumlar { get; set; }
 
     }
 }
